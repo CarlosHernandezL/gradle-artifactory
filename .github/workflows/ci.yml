@@ -20,3 +20,9 @@ jobs:
       env:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
+    - name: Publish
+      run: |
+        gradle artifactoryPublish
+      env:
+        ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
+        ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
