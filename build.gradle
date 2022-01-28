@@ -13,17 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-String artifactory_user = System.getenv("ARTIFACTORY_USER")
-String artifactory_password = System.getenv("ARTIFACTORY_PASSWORD")
-
-buildscript {
+ buildscript {
     repositories {
         maven {
             url "https://cahltech.jfrog.io/artifactory/test-gradle-release"
             credentials  {
-                username = "${artifactory_user}"
-                password = "${artifactory_password}"
+                username = System.getenv("ARTIFACTORY_USER")
+                password = System.getenv("ARTIFACTORY_PASSWORD")
             }
         }
     }
