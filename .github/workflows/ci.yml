@@ -15,5 +15,4 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       run: |
-        chmod +x gradlew
-        ./gradlew build --refresh-dependencies --info
+        gradle build --refresh-dependencies --info
