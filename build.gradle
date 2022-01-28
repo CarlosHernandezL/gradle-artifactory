@@ -16,6 +16,10 @@
 
 buildscript {
     repositories {
+        credentials  {
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+        }
         maven {
             url "https://cahltech.jfrog.io/artifactory/test-gradle-release"
         }
