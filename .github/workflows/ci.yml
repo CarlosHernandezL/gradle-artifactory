@@ -14,4 +14,6 @@ jobs:
     - name: Check out commit
       uses: actions/checkout@v2
     - name: Build
-      run: ./gradlew build --refresh-dependencies --info
+      run: |
+        chmod +x gradlew
+        ./gradlew build --refresh-dependencies --info
