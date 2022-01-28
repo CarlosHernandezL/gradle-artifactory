@@ -4,6 +4,10 @@ on:
     paths:
       - "src/**"
       - ".github/workflows/ci.yml"
+env:
+  ## Sets environment variable
+  ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
+  ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
 jobs:
   gradle-build:
     name: Gradle build
