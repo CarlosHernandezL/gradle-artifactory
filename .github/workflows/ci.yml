@@ -1,0 +1,17 @@
+name: continuos integration
+on:
+  push:
+    paths:
+      - "src/**"
+      - ".github/workflows/ci.yml"
+jobs:
+  gradle-build:
+    name: Gradle build
+    runs-on: [self-hosted]
+    container:
+      image: gradle:jdk17
+    steps:
+    - name: Check out commit
+      uses: actions/checkout@v2
+    - name: Build
+      run: ./gradlew build --refresh-dependencies --info
