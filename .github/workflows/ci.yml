@@ -15,12 +15,14 @@ jobs:
       uses: actions/checkout@v2
     - name: Wrapper
       run: |
-        gradle wrapper --gradle-distribution-url https://${{ secrets.JFROG_USER }}:${{ secrets.JFROG_PASSWORD }}@cahltech.jfrog.io/artifactory/gradle-distributions/gradle-7.2-all.zip
+        gradle wrapper -Dgradle.wrapperUser=${{ secrets.JFROG_USER }} -Dgradle.wrapperPassword=${{ secrets.JFROG_PASSWORD }}
       env:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
     - name: List files
       run: ls -la
+    - name: Parse special character
+      run: sed s/@/\@/g' gradle/wrapper/gradle-wrapper.properties
     - name: Build
       run: |
         ./gradlew build -Dgradle.wrapperUser=${{ secrets.JFROG_USER }} -Dgradle.wrapperPassword=${{ secrets.JFROG_PASSWORD }}
