@@ -22,7 +22,7 @@ jobs:
     - name: List files
       run: ls -la
     - name: Parse special character
-      run: sed 's/@cahl/\\@cahl/g' gradle/wrapper/gradle-wrapper.properties
+      run: sed -i 's/@cahl/\\@cahl/g' gradle/wrapper/gradle-wrapper.properties
     - name: Build
       run: |
         ./gradlew build
