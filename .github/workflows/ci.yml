@@ -14,15 +14,21 @@ jobs:
     steps:
     - name: Check out commit
       uses: actions/checkout@v2
+    - name: Wrapper
+      run: |
+        gradle wrapper
+      env:
+        ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
+        ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
     - name: Build
       run: |
-        gradle build --refresh-dependencies --info
+        ./gradlew build
       env:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
-    - name: Publish
-      run: |
-        gradle artifactoryPublish
-      env:
-        ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
-        ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
+    ##- name: Publish
+    ##  run: |
+    ##    gradle artifactoryPublish
+    ##  env:
+    ##    ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
+    ##    ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
