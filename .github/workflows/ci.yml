@@ -22,7 +22,7 @@ jobs:
     - name: List files
       run: ls -la
     - name: Parse special character
-      run: sed s/@/\@/g' gradle/wrapper/gradle-wrapper.properties
+      run: sed 's/@/\@/g' gradle/wrapper/gradle-wrapper.properties
     - name: Build
       run: |
         ./gradlew build -Dgradle.wrapperUser=${{ secrets.JFROG_USER }} -Dgradle.wrapperPassword=${{ secrets.JFROG_PASSWORD }}
