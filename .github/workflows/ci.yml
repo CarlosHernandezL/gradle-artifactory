@@ -21,7 +21,7 @@ jobs:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
     - name: List files
-      run: ls gradle/
+      run: ls /tmp
     - name: Build
       run: |
         ./gradlew build -Dgradle.wrapperUser=${{secrets.JFROG_USER}} -Dgradle.wrapperPassword=${{secrets.JFROG_PASSWORD}}
