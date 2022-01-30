@@ -50,17 +50,17 @@ dependencies {
     testImplementation 'junit:junit:4.7'
 }
 
-task configureWrapper {
-    String username = System.getProperty("gradle.wrapperUser")
-    String password = System.getProperty("gradle.wrapperPassword")
-    String gradleVersion = '7.2'
-    println "https://${username}:${password}@krogertechnology.jfrog.io/artifactory/gradle-distributions/gradle-${gradleVersion}-all.zip"
-    doLast {
-        wrapper.distributionUrl = "https://${username}:${password}@krogertechnology.jfrog.io/artifactory/gradle-distributions/gradle-${gradleVersion}-all.zip"
-    }
-}
+#task configureWrapper {
+#    String username = System.getProperty("gradle.wrapperUser")
+#    String password = System.getProperty("gradle.wrapperPassword")
+#    String gradleVersion = '7.2'
+#    println "https://${username}:${password}@krogertechnology.jfrog.io/artifactory/gradle-distributions/gradle-${gradleVersion}-all.zip"
+#    doLast {
+#        wrapper.distributionUrl = "https://${username}:${password}@krogertechnology.jfrog.io/artifactory/gradle-distributions/gradle-${gradleVersion}-all.zip"
+#    }
+#}
 
-wrapper.dependsOn configureWrapper
+#wrapper.dependsOn configureWrapper
 
 publishing {
     publications {
