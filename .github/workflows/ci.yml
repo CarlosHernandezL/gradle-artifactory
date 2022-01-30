@@ -16,13 +16,13 @@ jobs:
       uses: actions/checkout@v2
     - name: Wrapper
       run: |
-        gradle wrapper
+        gradle wrapper -Dgradle.wrapperUser=${{secrets.JFROG_USER}} -Dgradle.wrapperPassword=${{secrets.JFROG_PASSWORD}}
       env:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
     - name: Build
       run: |
-        ./gradlew build
+        ./gradlew build -Dgradle.wrapperUser=${{secrets.JFROG_USER}} -Dgradle.wrapperPassword=${{secrets.JFROG_PASSWORD}}
       env:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
