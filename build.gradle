@@ -51,8 +51,8 @@ dependencies {
 }
 
 task configureWrapper {
-    String username = System.getenv("ARTIFACTORY_USER")
-    String password = System.getenv("ARTIFACTORY_PASSWORD")
+    String username = System.getProperty("gradle.wrapperUser")
+    String password = System.getProperty("gradle.wrapperPassword")
     String gradleVersion = '7.2'
     println "https://${username}:${password}@krogertechnology.jfrog.io/artifactory/gradle-distributions/gradle-${gradleVersion}-all.zip"
     doLast {
