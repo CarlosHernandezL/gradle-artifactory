@@ -20,7 +20,7 @@ jobs:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
     - name: List files
-      run: echo $GRADLE_USER_HOME
+      run: ls -la .gradle/
     - name: Parse special character
       run: sed -i 's/@/\\@/g' gradle/wrapper/gradle-wrapper.properties
     - name: Build
