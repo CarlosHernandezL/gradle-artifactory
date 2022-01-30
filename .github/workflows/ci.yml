@@ -22,10 +22,10 @@ jobs:
     - name: List files
       run: ls -la
     - name: Parse special character
-      run: sed 's/@/\\@/g' gradle/wrapper/gradle-wrapper.properties
+      run: sed 's/@cahl/\\@cahl/g' gradle/wrapper/gradle-wrapper.properties
     - name: Build
       run: |
-        ./gradlew build -Dgradle.wrapperUser=${{ secrets.JFROG_USER }} -Dgradle.wrapperPassword=${{ secrets.JFROG_PASSWORD }}
+        ./gradlew build
       env:
         ARTIFACTORY_USER: ${{ secrets.JFROG_USER }}
         ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
